@@ -1,0 +1,126 @@
+<head>
+  <title>range</title>
+</head>
+
+<body>
+	<header>
+		<!-- login before doing anything else -->
+		<h1>Range</h1>
+		<h3>Data collection tool</h3>
+		<br/><br/>
+		{{> loginButtons}}
+	</header>
+
+	<!-- only show UI container if user is logged in -->
+	{{#if currentUser}}
+	<div class="app-container">
+		<div class="season-container">
+			<!-- create a new season -->
+			<div class="create-season">
+				{{> addSeasonForm}}
+			</div>
+			<!-- List of all seasons -->
+			<ul>
+				{{#each seasons}}
+				{{> seasonList}}
+				{{/each}}
+			</ul>
+		</div>
+		<div class="team-container">
+			<!-- create a new team -->
+			<div class="create-team">
+				{{> addTeamForm}}
+			</div>
+			<!-- List of all teams for this season -->
+			<ul>
+				{{#each teams}}
+				{{> teamList}}
+				{{/each}}
+			</ul>
+		</div>
+		<div class="player-container">
+			<!-- create a new player -->
+			<div class="create-player">
+				{{> addPlayerForm}}
+			</div>
+			<!-- List of all players for a team -->
+			<ul>
+				{{#each players}}
+				{{> addPlayerList}}
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+	{{/if}}
+
+</body>
+
+<!-- meteor templates for reactive ui goes below here -->
+<template name="addSeasonForm">
+	<form>
+		<input type="text" name="seasonYear" placeholder="20xx-20xx">
+		<input type="text" name="seasonName" placeholder="name">
+		<input type="submit" value="Add Season">
+	</form>
+</template>
+
+<template name="seasonList">
+	{{#if isOwner}}
+		<li>
+			<button class="selectSeason">Select Season</button>
+			<span class="seasonList">{{name}} {{year}}</span>
+		</li>
+	{{/if}}
+</template>
+
+<template name="addTeamForm">
+	<form>
+		<input type="text" name="coach" placeholder="Coach's Name">
+		<input type="text" name="teamName" placeholder="Team Name">
+		<input type="submit" value="Add Team">
+	</form>
+</template>
+
+<template name="teamList">
+	{{#if isSeason}}
+		<li>
+			<!--
+			<input type="radio" name="homeAway" value="home">
+			Home
+			<input type="radio" name="homeAway" value="away">
+			Away -->
+			<span class="teamList"><strong>{{name}}</strong> {{coach}}</span>
+			<button class="viewPlayers">Players</button>			
+		</li>
+	{{/if}}
+</template>
+
+<template name="addPlayerForm">
+	<form>
+		<input type="text" name="playerName" placeholder="Name">
+		<input type="text" name="playerNumber" placeholder="Number">
+		<input type="text" name="playerHeight" placeholder="Height">
+		<select name="playerPosition">
+			<option value="pg">PG</option>
+			<option value="sg">SG</option>
+			<option value="sf">SF</option>
+			<option value="pf">PF</option>
+			<option value="c">C</option>
+		</select>
+		<select name="playerYear">
+			<option value="sr">Sr</option>
+			<option value="jr">Jr</option>
+			<option value="so">So</option>
+			<option value="fr">Fr</option>
+		</select>
+		<input type="submit" value="Add Player">
+	</form>
+</template>
+
+<template name="addPlayerList">
+	{{#if isTeam}}
+		<li>
+			<span class="playerList">{{name}} {{number}} {{position}}</span>
+		</li>
+	{{/if}}
+</template>
