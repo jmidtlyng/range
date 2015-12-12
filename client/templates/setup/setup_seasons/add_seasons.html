@@ -1,0 +1,25 @@
+<!-- meteor templates for reactive ui goes below here -->
+<template name="addSeasonForm">
+    <h4>Create new season</h4>
+    <form>
+        <input type="text" name="seasonYear" placeholder="20xx-20xx">
+        <input type="text" name="seasonName" placeholder="name">
+        <input type="submit" value="Add Season">
+    </form>
+</template>
+
+<template name="editSeasonsHeader">
+    {{#if userHasSeason}}
+        <h4>Edit a season</h4>
+    {{/if}}
+</template>
+
+<template name="editSeasonsList">
+    {{#if isOwner}}
+        <li>
+            <button class="selectSeason">Select Season</button>
+            <span class="seasonList">{{name}} {{year}}</span>
+        </li>
+    {{/if}}
+</template>
+

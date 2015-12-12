@@ -1,0 +1,36 @@
+<template name="addPlayerForm">
+        <h4>Create new player</h4>
+        <form>
+            <input type="text" name="playerName" placeholder="Name">
+            <input type="text" name="playerNumber" placeholder="Number">
+            <input type="text" name="playerHeight" placeholder="Height">
+            <select name="playerPosition">
+                <option value="pg">PG</option>
+                <option value="sg">SG</option>
+                <option value="sf">SF</option>
+                <option value="pf">PF</option>
+                <option value="c">C</option>
+            </select>
+            <select name="playerYear">
+                <option value="sr">Sr</option>
+                <option value="jr">Jr</option>
+                <option value="so">So</option>
+                <option value="fr">Fr</option>
+            </select>
+            <input type="submit" value="Add Player">
+        </form>
+</template>
+
+<template name="editPlayersHeader">
+    {{#if teamHasPlayer}}
+        <h4>Edit a player</h4>
+    {{/if}}
+</template>
+
+<template name="addPlayerList">
+    {{#if isTeam}}
+        <li>
+            <span class="playerList">{{name}} {{number}} {{position}}</span>
+        </li>
+    {{/if}}
+</template>
