@@ -1,0 +1,60 @@
+<template name="setupGame">
+    <div class="season-container">
+        {{> seasonSetup}}
+    </div>
+    <div class="team-container">
+        {{> teamSetup}}
+    </div>
+    <div class="player-container">
+        {{> playerSetup}}
+    </div>
+</template>
+
+<template name="seasonSetup">
+    <!-- create a new season -->
+    <div class="create-season">
+        {{> addSeasonForm}}
+    </div>
+    <!-- header to designate list of existing seasons for current user -->
+    {{> editSeasonsHeader}}
+    <!-- List of all seasons -->
+    <ul>
+        {{#each seasons}}
+        {{> editSeasonsList}}
+        {{/each}}
+    </ul>
+</template>
+
+<template name="teamSetup">
+    {{#if seasonIsSet}}
+        <!-- create a new team -->
+        <div class="create-team">
+            {{> addTeamForm}}
+        </div>
+        <!-- header to designate list of existing teams for selected season -->
+        {{> editTeamsHeader}}
+        <!-- List of all teams for this season -->
+        <ul>
+            {{#each teams}}
+            {{> editTeamsList}}
+            {{/each}}
+        </ul>
+    {{/if}}
+</template>
+
+<template name="playerSetup">
+    {{#if teamIsSet}}
+        <!-- create a new player -->
+        <div class="create-player">
+            {{> addPlayerForm}}
+        </div>
+        <!-- header to designate list of existing players for selected team -->
+        {{> editPlayersHeader}}
+        <!-- List of all players for a team -->
+        <ul>
+            {{#each players}}
+            {{> addPlayerList}}
+            {{/each}}
+        </ul>
+    {{/if}}
+</template>

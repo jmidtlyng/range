@@ -1,0 +1,28 @@
+<template name="addTeamForm">
+    <h4>Create new team</h4>
+    <form>
+        <input type="text" name="coach" placeholder="Coach's Name">
+        <input type="text" name="teamName" placeholder="Team Name">
+        <input type="submit" value="Add Team">
+    </form>
+</template>
+
+<template name="editTeamsHeader">
+    {{#if seasonHasTeam}}
+        <h4>Edit a team</h4>
+    {{/if}}
+</template>
+
+<template name="editTeamsList">
+    {{#if isSeason}}
+        <li>
+            <!--
+            <input type="radio" name="homeAway" value="home">
+            Home
+            <input type="radio" name="homeAway" value="away">
+            Away -->
+            <span class="teamList"><strong>{{name}}</strong> {{coach}}</span>
+            <button class="viewPlayers">Players</button>
+        </li>
+    {{/if}}
+</template>

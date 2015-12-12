@@ -1,0 +1,27 @@
+<head>
+  <title>range</title>
+</head>
+
+<body>
+    <header>
+        <!-- login before doing anything else -->
+        <h1>Range</h1>
+        <h3>Data collection tool</h3>
+        <br/><br/>
+        {{> loginButtons}}
+        <br/><br/>
+    </header>
+
+    <!-- only show UI container if user is logged in -->
+    {{#if currentUser}}
+    <div class="app-container">
+        <div class="startup-buttons">
+            {{> startupButtons}}
+        </div>
+        <div class="setup-container">
+            {{> setupGame}}
+        </div>
+    </div>
+    {{/if}}
+
+</body>
