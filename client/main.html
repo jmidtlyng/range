@@ -14,14 +14,24 @@
 
     <!-- only show UI container if user is logged in -->
     {{#if currentUser}}
-    <div class="app-container">
-        <div class="startup-buttons">
-            {{> startupButtons}}
+        <div class="app-container">
+            <div class="startup-buttons">
+                {{> startupButtons}}
+            </div>
+            <br/>
+            
+            <div class="setup-container">
+                {{> setupGame}}
+            </div>
+
+            <div class="buildGame-container">
+                {{> buildGame}}
+            </div>
+
+            <div class="recordGame-container">
+                {{> recordGame}}
+            </div>
         </div>
-        <div class="setup-container">
-            {{> setupGame}}
-        </div>
-    </div>
     {{/if}}
 
 </body>

@@ -1,3 +1,9 @@
+Template.addTeamForm.helpers({
+  selectedSeason: function(){
+    var openSeason = Session.get('currentSeason');
+    return Season.findOne( { _id: openSeason } );
+  }
+});
 // Add a team to the database
 Template.addTeamForm.events({
   "submit form": function(event){
@@ -15,6 +21,10 @@ Template.addTeamForm.events({
     // Clear form
     event.target.coach.value = "";
     event.target.teamName.value = "";
+  },
+  "click .backToEditSession": function(){
+    Session.set("hideEditTeam", 1);
+    Session.set("hideEditSeason", 0);
   }
 });
 
@@ -32,7 +42,9 @@ Template.editTeamsList.events({
   "click .viewPlayers": function(){
     var teamId = this._id;
     Session.set("currentTeam", teamId);
-    var checkTeamId = Session.get("currentTeam");
+
+    Session.set("hideEditTeam", 1);
+    Session.set("hideEditPlayer", 0);
   }
 });
 

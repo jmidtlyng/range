@@ -5,8 +5,8 @@ Template.addSeasonForm.events({
     event.preventDefault();
 
     // Get value from form elements
-    var name = event.target.seasonYear.value;
-    var year = event.target.seasonName.value;
+    var year = event.target.seasonYear.value;
+    var name = event.target.seasonName.value;
 
     // Insert season into the collection
     Meteor.call("addSeason", year, name);
@@ -31,6 +31,8 @@ Template.editSeasonsList.events({
   "click .selectSeason": function() {
     var seasonId = this._id;
     Session.set("currentSeason", seasonId);
+    Session.set("hideEditSeason", 1);
+    Session.set("hideEditTeam", 0);
   }
 });
 

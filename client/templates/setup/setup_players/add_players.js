@@ -1,3 +1,13 @@
+Template.addPlayerForm.helpers({
+  selectedSeason: function(){
+    var openSeason = Session.get('currentSeason');
+    return Season.findOne( { _id: openSeason } );
+  },
+  selectedTeam: function(){
+    var openTeam = Session.get('currentTeam');
+    return Team.findOne( { _id: openTeam });
+  }
+});
 // Add a player to the database
 Template.addPlayerForm.events({
   "submit form": function(event){
@@ -21,6 +31,10 @@ Template.addPlayerForm.events({
     event.target.playerHeight.value = '';
     event.target.playerPosition.value = '';
     event.target.playerYear.value = '';
+  },
+  "click .backToEditTeam": function(){
+    Session.set("hideEditPlayer", 1);
+    Session.set("hideEditTeam", 0);
   }
 });
 

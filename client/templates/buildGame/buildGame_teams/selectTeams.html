@@ -1,0 +1,22 @@
+<template name="selectTeamsHeader">
+    <button class="backToSelectSession">Back</button>
+    <p>{{selectedSeason.year}} {{selectedSeason.name}}</p>
+
+    {{#if seasonHasTeam}}
+        <h4>Select a team</h4>
+    {{else}}
+        <h4>Setup a team for this season</h4>
+    {{/if}}
+</template>
+
+<template name="selectTeamsList">
+    {{#if isSeason}}
+        <li>
+            <input type="radio" name="homeTeam" value="{{_id}}">
+            Home
+            <input type="radio" name="awayTeam" value="{{_id}}">
+            Away - 
+            <span class="selectTeamsList"><strong>{{name}}</strong> {{coach}}</span>
+        </li>
+    {{/if}}
+</template>

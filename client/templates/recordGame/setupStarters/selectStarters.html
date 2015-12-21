@@ -1,0 +1,27 @@
+<template name="homeTeamHeader">
+    <p>Home: {{selectedHomeTeam.name}}</p>
+</template>
+
+<template name="awayTeamHeader">
+    <p>Away: {{selectedAwayTeam.name}}</p>
+</template>
+
+<template name="selectHomeStartersList">
+    {{#if isHomeTeam}}
+        <li>
+            <span class="homeStarterCount">{{homeStarterCount.count}}</span>
+            <span class="playerList">{{name}} {{number}} {{position}}</span>
+            <button class="setHomeStarter">Start</button>
+        </li>
+    {{/if}}
+</template>
+
+<template name="selectAwayStartersList">
+    {{#if isAwayTeam}}
+        <li>
+            <span class="awayStarterCount">{{awayStarterCount.count}}</span>
+            <span class="playerList">{{name}} {{number}} {{position}}</span>
+            <button class="setAwayStarter">Start</button>
+        </li>
+    {{/if}}
+</template>

@@ -1,0 +1,16 @@
+<template name="selectSeasonsHeader">
+    {{#if userHasSeason}}
+        <h4>Select a season</h4>
+    {{else}}
+        <h4>Setup a season, team, and players for a game</h4>
+    {{/if}}
+</template>
+
+<template name="selectSeasonsList">
+    {{#if isOwner}}
+        <li>
+            <button class="selectSeason">Select</button>
+            <span class="seasonList">{{name}} {{year}}</span>
+        </li>
+    {{/if}}
+</template>
