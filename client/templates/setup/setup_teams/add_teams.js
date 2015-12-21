@@ -42,7 +42,6 @@ Template.editTeamsList.events({
   "click .viewPlayers": function(){
     var teamId = this._id;
     Session.set("currentTeam", teamId);
-    var checkTeamId = Session.get("currentTeam");
 
     Session.set("hideEditTeam", 1);
     Session.set("hideEditPlayer", 0);

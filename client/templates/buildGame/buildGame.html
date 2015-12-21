@@ -1,0 +1,48 @@
+<template name="buildGame">
+    {{#if tracking}}
+        <div class="selectSeason-container">
+            {{> selectSeason}}
+        </div>
+        <div class="selectTeam-container">
+            {{> selectTeams}}
+        </div>
+        <div class="selectDate-container">
+            {{> selectGameDate}}
+        </div>
+    {{/if}}
+</template>
+
+<template name="selectSeason">
+    {{#if showSelectSeason}}
+        <!-- show season header or direct user back to setup page -->
+        {{> selectSeasonsHeader}}
+        <ul>
+            {{#each seasons}}
+                {{> selectSeasonsList}}
+            {{/each}}
+        </ul>
+    {{/if}}
+</template>
+
+<template name="selectTeams">
+    {{#if showSelectTeams}}
+        <!-- header to designate list of existing teams for selected season -->
+        {{> selectTeamsHeader}}
+        <!-- List of all teams for this season -->
+        <form>
+            <ul>
+                {{#each teams}}
+                    {{> selectTeamsList}}
+                {{/each}}
+            </ul>
+            <input type="submit" value="Select">
+        </form>
+    {{/if}}
+</template>
+
+<template name="selectGameDate">
+    {{#if showSelectDate}}
+        {{> selectDateHeader}}
+        {{> selectDate}}
+    {{/if}}
+</template>
