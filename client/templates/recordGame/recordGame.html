@@ -12,25 +12,21 @@
         <!-- create a new player -->
         <h4>Select Game Starters</h4>
         <!-- List of all players for a team -->
-        <table style="width: 50%">
-            <th>{{> homeTeamHeader}}</th>
-            <th>{{> awayTeamHeader}}</th>
-            <tr>
-                <td align="center">
-                    <ul>
-                        {{#each players}}
-                            {{> selectHomeStartersList}}
-                        {{/each}}
-                    </ul>
-                </td>
-                <td align="center">
-                    <ul>
-                        {{#each players}}
-                            {{> selectAwayStartersList}}
-                        {{/each}}
-                    </ul>
-                </td>
-            </tr>
-        </table>
+        <div style="display: inline-block;">
+            {{> homeTeamHeader}}
+            <ul style="list-style-type: none;">
+                {{#each players}}
+                    {{> selectHomeStartersList}}
+                {{/each}}
+            </ul>
+        </div>
+        <div style="display: inline-block;">
+            {{> awayTeamHeader}}
+            <ul style="list-style-type: none;">
+                {{#each players}}
+                    {{> selectAwayStartersList}}
+                {{/each}}
+            </ul>
+        </div>
     {{/if}}
 </template>
