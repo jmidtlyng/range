@@ -1,3 +1,7 @@
+<template name="gameDate">
+    {{date}}
+</template>
+
 <template name="homeTeamHeader">
     <p><strong>Home:</strong> {{selectedHomeTeam.name}}</p>
 </template>
@@ -9,9 +13,11 @@
 <template name="selectHomeStartersList">
     {{#if isHomeTeam}}
         <li>
-            <span class="homeStarterCount">{{homeStarterCount.count}}</span>
-            <span class="playerList">{{name}} {{number}} {{position}}</span>
-            <button class="setHomeStarter">Start</button>
+            <form>
+                <span class="homeStarterCount">{{homeStarterCount.count}}</span>
+                <span class="playerList">{{name}} {{number}} {{position}}</span>
+                <input type="submit" name="startHomePlayerIpt" value="Start">
+            </form>
         </li>
     {{/if}}
 </template>
@@ -19,9 +25,11 @@
 <template name="selectAwayStartersList">
     {{#if isAwayTeam}}
         <li>
-            <span class="awayStarterCount">{{awayStarterCount.count}}</span>
-            <span class="playerList">{{name}} {{number}} {{position}}</span>
-            <button class="setAwayStarter">Start</button>
+            <form>
+                <span class="awayStarterCount">{{awayStarterCount.count}}</span>
+                <span class="playerList">{{name}} {{number}} {{position}}</span>
+                <input type="submit" name="startAwayPlayerIpt" value="Start">
+            </form>
         </li>
     {{/if}}
 </template>

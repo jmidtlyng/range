@@ -1,32 +1,61 @@
 <template name="recordGame">
      {{#if recording}}
-        <button class="quit">Back</button>   
-        <div class="selectStarters-container">
-            {{> selectStarters}}
-        </div>
+        {{#if pickingStarters}}
+            <button class="quit">Back</button>   
+            <div class="selectStarters-container">
+                {{> selectStarters}}
+            </div>
+        {{/if}}
+        {{#if takingStats}}
+            {{> gamePage}}
+        {{/if}}
     {{/if}}
 </template>
 
 <template name="selectStarters">
     {{#if showSelectStarters}}
         <!-- create a new player -->
+        <p>Game Date: {{> gameDate}}</p>
         <h4>Select Game Starters</h4>
-        <!-- List of all players for a team -->
-        <div style="display: inline-block;">
-            {{> homeTeamHeader}}
-            <ul style="list-style-type: none;">
-                {{#each players}}
-                    {{> selectHomeStartersList}}
-                {{/each}}
-            </ul>
+        <div>
+            <!-- List of all players for a team -->
+            <div style="display: inline-block;">
+                {{> homeTeamHeader}}
+                <ul style="list-style-type: none;">
+                    {{#each players}}
+                        {{> selectHomeStartersList}}
+                    {{/each}}
+                </ul>
+                <p>{{homeStartersDone}}</p>
+            </div>
+            <div style="display: inline-block;">
+                {{> awayTeamHeader}}
+                <ul style="list-style-type: none;">
+                    {{#each players}}
+                        {{> selectAwayStartersList}}
+                    {{/each}}
+                </ul>
+                <p>{{awayStartersDone}}</p>
+            </div>
         </div>
-        <div style="display: inline-block;">
-            {{> awayTeamHeader}}
-            <ul style="list-style-type: none;">
-                {{#each players}}
-                    {{> selectAwayStartersList}}
-                {{/each}}
-            </ul>
-        </div>
+        <button class="enterGame">Let's Go</button>
     {{/if}}
+</template>
+
+<template name="gamePage">
+    <div class="homeTeam" style="display: inline-block;">
+        <h4>Home</h4>
+        {{#each starters}}
+            {{> homeTeamControls}}
+        {{/each}}
+    </div>
+    <div class="court" style="display: inline-block;">
+        {{> gameControls}}
+    </div>
+    <div class="awayTeam" style="display: inline-block;">
+        <h4>Away</h4>
+        {{#each starters}}
+            {{> awayTeamControls}}
+        {{/each}}
+    </div>
 </template>
