@@ -33,10 +33,10 @@ Template.selectDate.events({
     event.target.gameDate.value = "";
     Session.set("track", 0);
     Session.set("record", 1);
+    Session.set("pickStarters", 1);
 
     var gameId = Game.findOne( { home: homeTeam, away: awayTeam, date: date } )._id;
     Session.set("gameId", gameId);
     var testVar = Session.get('gameId');
-    console.log(testVar);
-	}
+  }
 });

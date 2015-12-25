@@ -1,0 +1,32 @@
+<template name="homeTeamControls">
+	{{#if isHomeStarter}}
+		<li>
+			<button class="homePlayerBtn">{{liveHomePlayer.number}} {{liveHomePlayer.name}}</button>
+		</li>
+	{{/if}}
+</template>
+
+<template name="gameControls">
+	<img src="assets/court.jpg">
+	<form>
+		<div>
+			Make -
+			<input type="checkbox" name="makeChk">
+			Assisted -
+			<input type="checkbox" name="assistChk">
+			Fastbreak -
+			<input type="checkbox" name="fastbreakChk">
+			Putback -
+			<input type="checkbox" name="putbackChk">
+		</div>
+		<input type="submit" value="Enter Shot">
+	</form>
+</template>
+
+<template name="awayTeamControls">
+	{{#if isAwayStarter}}
+		<li>
+			<button class="awayPlayerBtn">{{liveAwayPlayer.number}} {{liveAwayPlayer.name}}</button>
+		</li>
+	{{/if}}
+</template>
