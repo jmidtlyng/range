@@ -1,7 +1,7 @@
 <template name="homeTeamControls">
 	{{#if isHomeStarter}}
 		<li>
-			<button class="homePlayerBtn">{{liveHomePlayer.number}} {{liveHomePlayer.name}}</button>
+			<button class="homePlayerBtn">{{homePlayer.number}} {{homePlayer.name}}</button>
 		</li>
 	{{/if}}
 </template>
@@ -26,7 +26,45 @@
 <template name="awayTeamControls">
 	{{#if isAwayStarter}}
 		<li>
-			<button class="awayPlayerBtn">{{liveAwayPlayer.number}} {{liveAwayPlayer.name}}</button>
+			<button class="awayPlayerBtn">{{awayPlayer.number}} {{awayPlayer.name}}</button>
 		</li>
+	{{/if}}
+</template>
+
+<template name="substitutions">
+	<h4 style="text-align: center;">{{subbingTeam.name}}</h4>
+	<form>
+		<div>
+			<div class="subOut" style="display: inline-block; vertical-align: top;">
+				<p style="text-decoration: underline; text-align: center;">Sub out</p>
+				<ul>
+					{{#each starters}}
+						{{> subOutList}}
+					{{/each}}
+				</ul>
+			</div>
+			<div class="subIn" style="display: inline-block; vertical-align: top;">
+				<p style="text-decoration: underline; text-align: center;">Sub in</p>
+				<ul style="list-style-type: none;">
+					{{#each players}}
+						{{> subInList}}
+					{{/each}}
+				</ul>
+			</div>
+		</div>	
+		<input type="submit" name="enterSubs" value="Substitute">
+		<button name="cancelSub">Cancel</button>
+	</form>
+</template>
+
+<template name="subOutList">
+	{{#if inGame}}
+		<li><input type="radio" name="inGame" value="{{playerInfo._id}}">{{playerInfo.number}} {{playerInfo.name}}</li>
+	{{/if}}
+</template>
+
+<template name="subInList">
+	{{#if outOfGame}}
+		<li><input type="radio" name="onBench" value="{{_id}}">{{number}} {{name}}</li>
 	{{/if}}
 </template>

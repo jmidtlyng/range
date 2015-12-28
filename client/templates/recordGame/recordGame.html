@@ -43,19 +43,33 @@
 </template>
 
 <template name="gamePage">
-    <div class="homeTeam" style="display: inline-block;">
+    <div class="homeTeam" style="display: inline-block; vertical-align: top;">
         <h4>Home</h4>
-        {{#each starters}}
-            {{> homeTeamControls}}
-        {{/each}}
+        <ul style="list-style-type: none;">
+            {{#each starters}}
+                {{> homeTeamControls}}
+            {{/each}}
+        </ul>
+        <br/>
+        <button class="homeSub">Sub</button>
     </div>
     <div class="court" style="display: inline-block;">
-        {{> gameControls}}
+        {{#if showGameControls}}
+            {{> gameControls}}
+        {{/if}}
+        {{#if substituting}}
+            {{> substitutions}}
+        {{/if}}
+
     </div>
-    <div class="awayTeam" style="display: inline-block;">
+    <div class="awayTeam" style="display: inline-block; vertical-align: top;">
         <h4>Away</h4>
-        {{#each starters}}
-            {{> awayTeamControls}}
-        {{/each}}
+        <ul style="list-style-type: none;">
+            {{#each starters}}
+                {{> awayTeamControls}}
+            {{/each}}
+        </ul>
+        <br/>
+        <button class="awaySub">Sub</button>
     </div>
 </template>
