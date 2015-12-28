@@ -54,5 +54,22 @@ Template.selectStarters.events({
 Template.gamePage.helpers({
   starters: function(){
     return Starter.find({});
+  },
+  showGameControls: function(){
+    var sub = Session.get('subSelected');
+    return (sub !== "home" && sub !== "away");
+  },
+  substituting: function(){
+    var sub = Session.get('subSelected');
+    return (sub === "home" || sub === "away");
+  }
+});
+
+Template.gamePage.events({
+  "click .homeSub": function(){
+    Session.set("subSelected", "home");
+  },
+  "click .awaySub": function(){
+    Session.set("subSelected", "away");
   }
 });
