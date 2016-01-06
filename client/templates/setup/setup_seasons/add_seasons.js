@@ -7,9 +7,10 @@ Template.addSeasonForm.events({
     // Get value from form elements
     var year = event.target.seasonYear.value;
     var name = event.target.seasonName.value;
+    var courtShape = event.target.courtShape.value;
 
     // Insert season into the collection
-    Meteor.call("addSeason", year, name);
+    Meteor.call("addSeason", year, name, courtShape);
 
     // Clear form
     event.target.seasonName.value = "";

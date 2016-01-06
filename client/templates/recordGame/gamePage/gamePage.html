@@ -1,32 +1,32 @@
 <template name="homeTeamControls">
 	{{#if isHomeStarter}}
 		<li>
-			<button class="homePlayerBtn">{{homePlayer.number}} {{homePlayer.name}}</button>
+			<button class="homePlayerBtn {{selectedPlayer}}">{{homePlayer.number}} {{homePlayer.name}}</button>
 		</li>
 	{{/if}}
 </template>
 
 <template name="gameControls">
-	<img src="assets/court.jpg">
-	<form>
-		<div>
-			Make -
-			<input type="checkbox" name="makeChk">
-			Assisted -
-			<input type="checkbox" name="assistChk">
-			Fastbreak -
-			<input type="checkbox" name="fastbreakChk">
-			Putback -
-			<input type="checkbox" name="putbackChk">
-		</div>
-		<input type="submit" value="Enter Shot">
-	</form>
+	<div style="position: relative; left:0; top:0;">
+		<img src="assets/{{courtShape}}" style="position: relative; top: 0; left: 0;"/>
+		{{#if pointPicked}}
+			<img src="assets/point.png" style="position: absolute; top: {{top}}px; left: {{left}}px"/>
+		{{/if}}
+	</div>
+	<div>
+		<button type="checkbox" class="makeBtn {{made}}">Make</button>
+		<button type="checkbox" class="assistBtn {{assisted}}">Assist</button>
+		<button type="checkbox" class="fastbreakBtn {{fastbroke}}">Fastbreak</button>
+		<button type="checkbox" class="putbackBtn {{putbacked}}">Putback</button>
+	</div>
+	<button type="submit" class="submitShotBtn">Enter Shot</button>
+	<p>{{pickPlayerMsg}}</p>
 </template>
 
 <template name="awayTeamControls">
 	{{#if isAwayStarter}}
 		<li>
-			<button class="awayPlayerBtn">{{awayPlayer.number}} {{awayPlayer.name}}</button>
+			<button class="awayPlayerBtn {{selectedPlayer}}">{{awayPlayer.number}} {{awayPlayer.name}}</button>
 		</li>
 	{{/if}}
 </template>
@@ -53,8 +53,8 @@
 			</div>
 		</div>	
 		<input type="submit" name="enterSubs" value="Substitute">
-		<button name="cancelSub">Cancel</button>
 	</form>
+	<button name="cancelSub">Cancel</button>
 </template>
 
 <template name="subOutList">
