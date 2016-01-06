@@ -132,12 +132,24 @@ Template.gameControls.events({
 		} else {
 			var putback = 0;
 		}
-		var player = Session.get('statPlayer');
-		var x = Session.get('x') / 562;
-		var y = Session.get('y') / 485;
-		var gameId = Session.get('gameId');
 
-		if(player !== ''){
+		var player = Session.get('statPlayer');
+		var gameId = Session.get('gameId');
+		var seasonId = Session.get('selectedSeason');
+		var level = Season.findOne( { _id: seasonId } ).courtShape;
+
+		if(level = "hs") {
+			var x = Session.get('x') / 522;
+			var y = Session.get('y') / 436;
+		} else if(level = "college") {
+			var x = Session.get('x') / 468;
+			var y = Session.get('y') / 438;
+		} else {
+			var x = Session.get('x') / 472;
+			var y = Session.get('y') / 438;
+		}
+
+		if(typeof player !== 'undefined' && player !== ''){
 			Meteor.call('addShot', player, gameId, x, y, make, assist, putback, fastbreak);
 
 			Session.set('make', '');
@@ -190,7 +202,7 @@ Template.substitutions.helpers({
 		var homeOrAway = Session.get('subSelected');
 		if(homeOrAway === "home"){
 			var teamId = Game.findOne( { _id: gameId } ).home;
-			return Team.findOne( { _id: teamId } ); 
+			return Team.findOne( { _id: teamId } );
 		} else {
 			var teamId = Game.findOne( { _id: gameId } ).away;
 			return Team.findOne( { _id: teamId } );
